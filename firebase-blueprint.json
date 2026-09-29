@@ -1,0 +1,327 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Varian rokok master data dengan harga dan isi per slot",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Nama varian rokok",
+          "maxLength": 100
+        },
+        "pricePerSlot": {
+          "type": "number",
+          "description": "Harga jual per slot"
+        },
+        "defaultBuyPrice": {
+          "type": "number",
+          "description": "Estimasi harga beli per slot"
+        },
+        "itemsPerSlot": {
+          "type": "number",
+          "description": "Isi batang/bungkus per slot (default 10)"
+        },
+        "minStockThreshold": {
+          "type": "number",
+          "description": "Batas peringatan stok menipis"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Waktu dibuat"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu diperbarui"
+        }
+      },
+      "required": ["name", "pricePerSlot"]
+    },
+    "Region": {
+      "title": "Region",
+      "description": "Master data daerah distribusi",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Nama daerah (Lamongan, Tuban, Gresik, Surabaya, dll)",
+          "maxLength": 100
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Waktu dibuat"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu diperbarui"
+        }
+      },
+      "required": ["name"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "Data pelanggan / pembeli rokok",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Nama pembeli",
+          "maxLength": 150
+        },
+        "phone": {
+          "type": "string",
+          "description": "Nomor HP pembeli",
+          "maxLength": 30
+        },
+        "address": {
+          "type": "string",
+          "description": "Alamat lengkap pembeli",
+          "maxLength": 500
+        },
+        "regionId": {
+          "type": "string",
+          "description": "ID daerah domisili"
+        },
+        "regionName": {
+          "type": "string",
+          "description": "Nama daerah domisili"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Waktu dibuat"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu diperbarui"
+        }
+      },
+      "required": ["name"]
+    },
+    "Purchase": {
+      "title": "Purchase",
+      "description": "Transaksi pembelian stok dari pabrik",
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "Tanggal pembelian YYYY-MM-DD"
+        },
+        "productId": {
+          "type": "string",
+          "description": "ID varian produk"
+        },
+        "productName": {
+          "type": "string",
+          "description": "Nama varian produk"
+        },
+        "slots": {
+          "type": "number",
+          "description": "Jumlah slot yang dibeli"
+        },
+        "buyPricePerSlot": {
+          "type": "number",
+          "description": "Harga beli per slot dari pabrik"
+        },
+        "totalCost": {
+          "type": "number",
+          "description": "Total biaya beli (slots * buyPricePerSlot)"
+        },
+        "targetRegionId": {
+          "type": "string",
+          "description": "ID daerah tujuan stok"
+        },
+        "targetRegionName": {
+          "type": "string",
+          "description": "Nama daerah tujuan stok"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Catatan pembelian"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Waktu dibuat"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu diperbarui"
+        }
+      },
+      "required": ["date", "productId", "slots", "buyPricePerSlot", "targetRegionId"]
+    },
+    "Sale": {
+      "title": "Sale",
+      "description": "Transaksi penjualan rokok ke pembeli",
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "Tanggal penjualan YYYY-MM-DD"
+        },
+        "customerId": {
+          "type": "string",
+          "description": "ID pembeli"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Nama pembeli"
+        },
+        "customerPhone": {
+          "type": "string",
+          "description": "No HP pembeli"
+        },
+        "customerAddress": {
+          "type": "string",
+          "description": "Alamat pembeli"
+        },
+        "regionId": {
+          "type": "string",
+          "description": "ID daerah penjualan"
+        },
+        "regionName": {
+          "type": "string",
+          "description": "Nama daerah penjualan"
+        },
+        "productId": {
+          "type": "string",
+          "description": "ID varian rokok"
+        },
+        "productName": {
+          "type": "string",
+          "description": "Nama varian rokok"
+        },
+        "slots": {
+          "type": "number",
+          "description": "Jumlah slot yang dijual"
+        },
+        "pricePerSlot": {
+          "type": "number",
+          "description": "Harga jual per slot saat transaksi"
+        },
+        "costPerSlot": {
+          "type": "number",
+          "description": "Harga pokok per slot untuk estimasi laba kotor"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Total tagihan penjualan"
+        },
+        "paidAmount": {
+          "type": "number",
+          "description": "Jumlah yang sudah dibayarkan"
+        },
+        "remainingAmount": {
+          "type": "number",
+          "description": "Sisa piutang yang belum terbayar"
+        },
+        "paymentStatus": {
+          "type": "string",
+          "enum": ["lunas", "sebagian", "belum"],
+          "description": "Status pembayaran"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Catatan penjualan"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Waktu dibuat"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu diperbarui"
+        }
+      },
+      "required": ["date", "customerName", "regionId", "productId", "slots", "pricePerSlot", "paymentStatus"]
+    },
+    "Expense": {
+      "title": "Expense",
+      "description": "Catatan pengeluaran operasional atau ongkos kirim",
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "Tanggal pengeluaran YYYY-MM-DD"
+        },
+        "category": {
+          "type": "string",
+          "description": "Kategori pengeluaran (Ongkir, Transport, Operasional, Lainnya)"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Jumlah nominal pengeluaran"
+        },
+        "description": {
+          "type": "string",
+          "description": "Deskripsi atau keterangan pengeluaran"
+        },
+        "regionId": {
+          "type": "string",
+          "description": "Daerah terkait jika ada"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Waktu dibuat"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu diperbarui"
+        }
+      },
+      "required": ["date", "category", "amount"]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Pengaturan akun dan PIN akses aplikasi personal",
+      "type": "object",
+      "properties": {
+        "pin": {
+          "type": "string",
+          "description": "PIN akses"
+        },
+        "businessName": {
+          "type": "string",
+          "description": "Nama usaha"
+        },
+        "ownerEmail": {
+          "type": "string",
+          "description": "Email pemilik"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu diperbarui"
+        }
+      }
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Koleksi data master varian produk rokok"
+    },
+    "/regions/{regionId}": {
+      "schema": "Region",
+      "description": "Koleksi data master daerah distribusi"
+    },
+    "/customers/{customerId}": {
+      "schema": "Customer",
+      "description": "Koleksi master data pelanggan/pembeli"
+    },
+    "/purchases/{purchaseId}": {
+      "schema": "Purchase",
+      "description": "Koleksi transaksi pembelian stok dari pabrik"
+    },
+    "/sales/{saleId}": {
+      "schema": "Sale",
+      "description": "Koleksi transaksi penjualan rokok"
+    },
+    "/expenses/{expenseId}": {
+      "schema": "Expense",
+      "description": "Koleksi transaksi pengeluaran operasional/ongkir"
+    },
+    "/settings/{settingId}": {
+      "schema": "Settings",
+      "description": "Koleksi pengaturan personal dan konfigurasi PIN"
+    }
+  }
+}

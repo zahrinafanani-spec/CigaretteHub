@@ -1,0 +1,6 @@
+{
+  "name": "SigaretHub - Pembukuan Rokok Personal",
+  "description": "Dashboard pencatatan bisnis distribusi rokok personal: stok, pembelian, penjualan, keuangan, dan ekspor laporan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

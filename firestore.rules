@@ -1,0 +1,73 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner() {
+      return isSignedIn() && (
+        request.auth.token.email == 'zahrinafanani@gmail.com' ||
+        request.auth.token.email_verified == true ||
+        request.auth.uid != null
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Master Data Products
+    match /products/{productId} {
+      allow read: if isOwner();
+      allow create, update, delete: if isOwner() && isValidId(productId);
+    }
+
+    // Master Data Regions
+    match /regions/{regionId} {
+      allow read: if isOwner();
+      allow create, update, delete: if isOwner() && isValidId(regionId);
+    }
+
+    // Customers Data
+    match /customers/{customerId} {
+      allow read: if isOwner();
+      allow create, update, delete: if isOwner() && isValidId(customerId);
+    }
+
+    // Purchases Data
+    match /purchases/{purchaseId} {
+      allow read: if isOwner();
+      allow create, update, delete: if isOwner() && isValidId(purchaseId);
+    }
+
+    // Sales Data
+    match /sales/{saleId} {
+      allow read: if isOwner();
+      allow create, update, delete: if isOwner() && isValidId(saleId);
+    }
+
+    // Expenses Data
+    match /expenses/{expenseId} {
+      allow read: if isOwner();
+      allow create, update, delete: if isOwner() && isValidId(expenseId);
+    }
+
+    // App Settings
+    match /settings/{settingId} {
+      allow read: if isOwner();
+      allow create, update, delete: if isOwner() && isValidId(settingId);
+    }
+
+    // Test connection doc
+    match /test/{docId} {
+      allow read, write: if isOwner();
+    }
+  }
+}

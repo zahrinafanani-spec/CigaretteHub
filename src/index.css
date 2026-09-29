@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Any container with white or light background MUST have dark text */
+  .bg-white,
+  .bg-slate-50,
+  .bg-amber-50,
+  .bg-indigo-50,
+  .bg-emerald-50,
+  .bg-rose-50 {
+    color: #0f172a;
+  }
+
+  /* All form inputs, selects, and textareas inside white/light containers default to black/dark text */
+  .bg-white input,
+  .bg-white select,
+  .bg-white textarea,
+  input,
+  select,
+  textarea {
+    color: #0f172a;
+  }
+
+  /* Ensure options inside select tags are black text on white background */
+  option {
+    color: #0f172a;
+    background-color: #ffffff;
+  }
+}
+
+/* Custom dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
