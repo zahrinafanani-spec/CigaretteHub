@@ -159,14 +159,14 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-200">
+      <div className="flex items-center gap-2 border-b border-slate-800">
         <button
           type="button"
           onClick={() => setActiveTab('overview')}
           className={`py-2 px-4 text-xs font-bold border-b-2 transition-all ${
             activeTab === 'overview'
-              ? 'border-emerald-600 text-emerald-800'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              ? 'border-emerald-500 text-emerald-400'
+              : 'border-transparent text-slate-400 hover:text-white'
           }`}
         >
           Ringkasan Finansial & Kas
@@ -176,13 +176,13 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
           onClick={() => setActiveTab('receivables')}
           className={`py-2 px-4 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 ${
             activeTab === 'receivables'
-              ? 'border-rose-600 text-rose-800'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              ? 'border-rose-500 text-rose-400'
+              : 'border-transparent text-slate-400 hover:text-white'
           }`}
         >
           <span>Daftar Piutang</span>
           {activeReceivables.length > 0 && (
-            <span className="px-1.5 py-0.2 rounded-full bg-rose-100 text-rose-700 text-[10px]">
+            <span className="px-1.5 py-0.2 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[10px]">
               {activeReceivables.length}
             </span>
           )}
@@ -192,8 +192,8 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
           onClick={() => setActiveTab('expenses')}
           className={`py-2 px-4 text-xs font-bold border-b-2 transition-all ${
             activeTab === 'expenses'
-              ? 'border-indigo-600 text-indigo-800'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              ? 'border-indigo-500 text-indigo-400'
+              : 'border-transparent text-slate-400 hover:text-white'
           }`}
         >
           Pengeluaran Lain & Ongkir ({expenses.length})

@@ -215,14 +215,14 @@ export const MasterDataView: React.FC<MasterDataViewProps> = ({
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-200">
+      <div className="flex items-center gap-2 border-b border-slate-800">
         <button
           type="button"
           onClick={() => setActiveTab('products')}
           className={`py-2 px-4 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 ${
             activeTab === 'products'
-              ? 'border-amber-500 text-amber-900'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              ? 'border-amber-500 text-amber-400'
+              : 'border-transparent text-slate-400 hover:text-white'
           }`}
         >
           <Package className="w-3.5 h-3.5" />
@@ -234,8 +234,8 @@ export const MasterDataView: React.FC<MasterDataViewProps> = ({
           onClick={() => setActiveTab('regions')}
           className={`py-2 px-4 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 ${
             activeTab === 'regions'
-              ? 'border-amber-500 text-amber-900'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              ? 'border-amber-500 text-amber-400'
+              : 'border-transparent text-slate-400 hover:text-white'
           }`}
         >
           <MapPin className="w-3.5 h-3.5" />
@@ -247,8 +247,8 @@ export const MasterDataView: React.FC<MasterDataViewProps> = ({
           onClick={() => setActiveTab('customers')}
           className={`py-2 px-4 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 ${
             activeTab === 'customers'
-              ? 'border-amber-500 text-amber-900'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              ? 'border-amber-500 text-amber-400'
+              : 'border-transparent text-slate-400 hover:text-white'
           }`}
         >
           <Users className="w-3.5 h-3.5" />

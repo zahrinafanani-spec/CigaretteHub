@@ -4,32 +4,69 @@
   :root {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
+}
 
-  /* Any container with white or light background MUST have dark text */
-  .bg-white,
-  .bg-slate-50,
-  .bg-amber-50,
-  .bg-indigo-50,
-  .bg-emerald-50,
-  .bg-rose-50 {
-    color: #0f172a;
-  }
+/* ==========================================================================
+   VISIBILITY FIX FOR WHITE/LIGHT BACKGROUNDS (BLACK / DARK TEXT)
+   ========================================================================== */
 
-  /* All form inputs, selects, and textareas inside white/light containers default to black/dark text */
-  .bg-white input,
-  .bg-white select,
-  .bg-white textarea,
-  input,
-  select,
-  textarea {
-    color: #0f172a;
-  }
+/* Containers with white or light backgrounds have dark/black text */
+.bg-white,
+.bg-slate-50,
+.bg-slate-100,
+.bg-amber-50,
+.bg-indigo-50,
+.bg-emerald-50,
+.bg-rose-50 {
+  color: #0f172a;
+  color-scheme: light;
+}
 
-  /* Ensure options inside select tags are black text on white background */
-  option {
-    color: #0f172a;
-    background-color: #ffffff;
-  }
+/* Ensure inputs, selects, and textareas inside forms & white cards are pure black text on white bg */
+.bg-white input,
+.bg-white select,
+.bg-white textarea,
+.bg-slate-50 input,
+.bg-slate-50 select,
+.bg-slate-50 textarea,
+form input:not([class*="bg-transparent"]):not([class*="text-white"]):not([class*="text-slate-100"]),
+form select:not([class*="bg-transparent"]):not([class*="text-white"]):not([class*="text-slate-100"]),
+form textarea:not([class*="bg-transparent"]):not([class*="text-white"]):not([class*="text-slate-100"]),
+input:not([class*="bg-transparent"]):not([class*="text-white"]):not([class*="text-slate-100"]),
+select:not([class*="bg-transparent"]):not([class*="text-white"]):not([class*="text-slate-100"]),
+textarea:not([class*="bg-transparent"]):not([class*="text-white"]):not([class*="text-slate-100"]) {
+  color: #0f172a !important;
+  background-color: #ffffff;
+  color-scheme: light;
+}
+
+/* Form labels on white/light containers */
+.bg-white label,
+.bg-slate-50 label,
+form label {
+  color: #1e293b;
+}
+
+/* Input placeholder text */
+.bg-white input::placeholder,
+.bg-white textarea::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Dropdown option text */
+option {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+}
+
+/* Table text on white background */
+.bg-white table tbody td {
+  color: #0f172a;
+}
+.bg-white table thead th {
+  color: #334155;
 }
 
 /* Custom dark scrollbar */

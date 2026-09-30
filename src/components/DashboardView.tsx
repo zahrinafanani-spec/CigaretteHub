@@ -346,15 +346,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       {/* Low Stock Warning Banner */}
       {lowStockItems.length > 0 && (
         <div className="bg-amber-950/40 border border-amber-800/80 p-4 rounded-xl shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/30">
-              <AlertTriangle className="w-5 h-5" />
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/30">
+              <AlertTriangle className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-xs font-semibold text-amber-200 uppercase tracking-wider">
+              <h4 className="text-sm font-semibold text-amber-200 uppercase tracking-wider">
                 Peringatan Inventaris: {lowStockItems.length} Varian Rokok Menipis
               </h4>
-              <p className="text-xs text-amber-300/80 mt-0.5">
+              <p className="text-sm text-amber-300/80 mt-0.5">
                 {lowStockItems
                   .map(item => `${item.product.name} (Sisa ${item.currentStock} slop)`)
                   .join(' · ')}
@@ -364,9 +364,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <button
             type="button"
             onClick={onNavigateToPurchases}
-            className="px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-semibold shrink-0 transition-colors shadow-xs flex items-center gap-1.5"
+            className="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-semibold shrink-0 transition-colors shadow-xs flex items-center gap-2"
           >
-            <PackagePlus className="w-3.5 h-3.5" />
+            <PackagePlus className="w-4.5 h-4.5" />
             <span>+ Beli Stok Pabrik</span>
           </button>
         </div>
@@ -380,18 +380,18 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div className="bg-[#111827] rounded-xl border border-slate-800/80 p-4 shadow-xs hover:border-slate-700/80 transition-all flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+              <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Total Penjualan
               </span>
-              <div className="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/20">
-                <ShoppingBag className="w-3.5 h-3.5" />
+              <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/20">
+                <ShoppingBag className="w-4.5 h-4.5" />
               </div>
             </div>
             <div className="mt-2.5">
-              <div className="text-xl font-bold tracking-tight text-white font-mono tabular-nums">
+              <div className="text-2xl font-bold tracking-tight text-white font-mono tabular-nums">
                 {formatRupiah(totalSalesOmzet)}
               </div>
-              <div className="flex items-center gap-1.5 mt-1 text-[11px] text-slate-400">
+              <div className="flex items-center gap-1.5 mt-1 text-xs text-slate-300">
                 <span className="text-amber-400 font-semibold font-mono">
                   {formatNumber(totalSalesSlots)} Slop
                 </span>
@@ -400,14 +400,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               </div>
             </div>
           </div>
-          <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+          <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
             <span>Kas Masuk: <strong className="text-slate-200 font-mono">{formatRupiah(totalPaid)}</strong></span>
             <button
               type="button"
               onClick={onNavigateToSales}
-              className="text-amber-400 hover:text-amber-300 font-medium inline-flex items-center gap-0.5"
+              className="text-amber-400 hover:text-amber-300 font-medium inline-flex items-center gap-0.5 text-xs"
             >
-              Lihat <ChevronRight className="w-3 h-3" />
+              Lihat <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -416,18 +416,18 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div className="bg-[#111827] rounded-xl border border-slate-800/80 p-4 shadow-xs hover:border-slate-700/80 transition-all flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+              <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Total Pembelian
               </span>
-              <div className="w-7 h-7 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center border border-indigo-500/20">
-                <PackagePlus className="w-3.5 h-3.5" />
+              <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center border border-indigo-500/20">
+                <PackagePlus className="w-4.5 h-4.5" />
               </div>
             </div>
             <div className="mt-2.5">
-              <div className="text-xl font-bold tracking-tight text-white font-mono tabular-nums">
+              <div className="text-2xl font-bold tracking-tight text-white font-mono tabular-nums">
                 {formatRupiah(totalPurchasesCost)}
               </div>
-              <div className="flex items-center gap-1.5 mt-1 text-[11px] text-slate-400">
+              <div className="flex items-center gap-1.5 mt-1 text-xs text-slate-300">
                 <span className="text-indigo-400 font-semibold font-mono">
                   {formatNumber(totalPurchasesSlots)} Slop
                 </span>
@@ -436,14 +436,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               </div>
             </div>
           </div>
-          <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+          <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
             <span>Rata-rata: <strong className="text-slate-200 font-mono">{formatRupiah(avgPurchaseCostPerSlot)}/slop</strong></span>
             <button
               type="button"
               onClick={onNavigateToPurchases}
-              className="text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center gap-0.5"
+              className="text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center gap-0.5 text-xs"
             >
-              Lihat <ChevronRight className="w-3 h-3" />
+              Lihat <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -452,35 +452,35 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div className="bg-[#111827] rounded-xl border border-slate-800/80 p-4 shadow-xs hover:border-slate-700/80 transition-all flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+              <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Sisa Stok Siap Jual
               </span>
-              <div className="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/20">
-                <Package className="w-3.5 h-3.5" />
+              <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/20">
+                <Package className="w-4.5 h-4.5" />
               </div>
             </div>
             <div className="mt-2.5">
-              <div className="text-xl font-bold tracking-tight text-white font-mono tabular-nums">
+              <div className="text-2xl font-bold tracking-tight text-white font-mono tabular-nums">
                 {formatNumber(totalStockSlots)}{' '}
-                <span className="text-xs font-normal text-slate-400 font-sans">Slop</span>
+                <span className="text-sm font-normal text-slate-400 font-sans">Slop</span>
               </div>
-              <div className="flex items-center gap-1.5 mt-1 text-[11px] text-slate-400">
+              <div className="flex items-center gap-1.5 mt-1 text-xs text-slate-300">
                 <span>{uniqueProducts.length} Varian</span>
                 <span>·</span>
                 <span>4 Wilayah Aktif</span>
               </div>
             </div>
           </div>
-          <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+          <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
             <span className={lowStockItems.length > 0 ? 'text-amber-400 font-medium' : 'text-emerald-400 font-medium'}>
               {lowStockItems.length > 0 ? `${lowStockItems.length} Menipis` : 'Stok Aman'}
             </span>
             <button
               type="button"
               onClick={onNavigateToStock}
-              className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-0.5"
+              className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-0.5 text-xs"
             >
-              Kelola <ChevronRight className="w-3 h-3" />
+              Kelola <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -489,29 +489,29 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div className="bg-[#111827] rounded-xl border border-slate-800/80 p-4 shadow-xs hover:border-slate-700/80 transition-all flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+              <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Laba Bersih
               </span>
-              <div className="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
-                <DollarSign className="w-3.5 h-3.5" />
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+                <DollarSign className="w-4.5 h-4.5" />
               </div>
             </div>
             <div className="mt-2.5">
               <div
-                className={`text-xl font-bold tracking-tight font-mono tabular-nums ${
+                className={`text-2xl font-bold tracking-tight font-mono tabular-nums ${
                   netProfit >= 0 ? 'text-emerald-400' : 'text-rose-400'
                 }`}
               >
                 {formatRupiah(netProfit)}
               </div>
-              <div className="flex items-center gap-1.5 mt-1 text-[11px] text-slate-400">
-                <span>Margin: <strong className="text-slate-200">{profitMargin}%</strong></span>
+              <div className="flex items-center gap-1.5 mt-1 text-xs text-slate-300">
+                <span>Margin: <strong className="text-slate-100">{profitMargin}%</strong></span>
                 <span>·</span>
                 <span>Kotor: {formatRupiah(grossProfit)}</span>
               </div>
             </div>
           </div>
-          <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+          <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
             <span>Beban Ops: <strong className="text-slate-200 font-mono">{formatRupiah(totalExpenses)}</strong></span>
             <span className="text-slate-500">Estimasi</span>
           </div>
@@ -521,31 +521,31 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div className="bg-[#111827] rounded-xl border border-slate-800/80 p-4 shadow-xs hover:border-slate-700/80 transition-all flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+              <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Piutang / Tagihan
               </span>
-              <div className="w-7 h-7 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center border border-rose-500/20">
-                <Wallet className="w-3.5 h-3.5" />
+              <div className="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center border border-rose-500/20">
+                <Wallet className="w-4.5 h-4.5" />
               </div>
             </div>
             <div className="mt-2.5">
               <div
-                className={`text-xl font-bold tracking-tight font-mono tabular-nums ${
+                className={`text-2xl font-bold tracking-tight font-mono tabular-nums ${
                   totalReceivables > 0 ? 'text-rose-400' : 'text-slate-200'
                 }`}
               >
                 {formatRupiah(totalReceivables)}
               </div>
-              <div className="flex items-center gap-1.5 mt-1 text-[11px] text-slate-400">
+              <div className="flex items-center gap-1.5 mt-1 text-xs text-slate-300">
                 <span className="text-rose-400 font-medium">
                   {unpaidSalesCount} Faktur Belum Lunas
                 </span>
               </div>
             </div>
           </div>
-          <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+          <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
             <span>Kolektibilitas: <strong className="text-slate-200 font-mono">{paidRatio}%</strong></span>
-            <span className="text-rose-400/80 text-[10px]">Aktif</span>
+            <span className="text-rose-400/80 text-xs">Aktif</span>
           </div>
         </div>
       </div>

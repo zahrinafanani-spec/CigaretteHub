@@ -417,20 +417,20 @@ export default function App() {
       {/* Fixed Vertical Sidebar on Desktop / Laptop */}
       <aside className="hidden md:flex flex-col w-64 fixed left-0 top-0 bottom-0 bg-[#0D1322] border-r border-slate-800/80 z-30">
         {/* Sidebar Brand Header: h1 = CigaretteHub, span = Admin (no icon) */}
-        <div className="h-14 px-5 border-b border-slate-800/80 flex items-center justify-between shrink-0">
+        <div className="h-16 px-5 border-b border-slate-800/80 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
-            <h1 className="font-bold text-base tracking-tight text-white leading-tight">
+            <h1 className="font-bold text-lg tracking-tight text-white leading-tight">
               CigaretteHub
             </h1>
-            <span className="inline-block px-2 py-0.5 text-[10px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/30 rounded-full">
+            <span className="inline-block px-2.5 py-0.5 text-xs font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/30 rounded-full">
               Admin
             </span>
           </div>
         </div>
 
         {/* Sidebar Navigation Items */}
-        <div className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
-          <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-3 mb-2 font-mono">
+        <div className="flex-1 py-4 px-3 space-y-1.5 overflow-y-auto">
+          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider px-3 mb-2 font-mono">
             Menu Utama
           </div>
 
@@ -442,37 +442,37 @@ export default function App() {
                 key={item.id}
                 type="button"
                 onClick={() => setActiveView(item.id)}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                   isActive
                     ? 'bg-amber-500 text-slate-950 font-semibold shadow-xs'
-                    : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
-                <div className="flex items-center gap-2.5">
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-slate-950' : 'text-slate-400'}`} />
+                <div className="flex items-center gap-3">
+                  <Icon className={`w-5 h-5 ${isActive ? 'text-slate-950' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </div>
-                {isActive && <ChevronRight className="w-3.5 h-3.5" />}
+                {isActive && <ChevronRight className="w-4 h-4" />}
               </button>
             );
           })}
 
           {/* Laporan Section */}
           <div className="pt-4 mt-2 border-t border-slate-800/60">
-            <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-3 mb-2 font-mono">
+            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider px-3 mb-2 font-mono">
               Dokumen & Analisis
             </div>
             <button
               type="button"
               onClick={handleExportExcel}
               disabled={isExporting}
-              className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-slate-400 hover:text-emerald-400 hover:bg-slate-800/50 transition-all group"
+              className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-emerald-400 hover:bg-slate-800/60 transition-all group"
             >
-              <div className="flex items-center gap-2.5">
-                <FileSpreadsheet className="w-4 h-4 text-emerald-500 group-hover:scale-105 transition-transform" />
+              <div className="flex items-center gap-3">
+                <FileSpreadsheet className="w-5 h-5 text-emerald-400 group-hover:scale-105 transition-transform" />
                 <span>Laporan (Excel)</span>
               </div>
-              <Download className={`w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-400 ${isExporting ? 'animate-bounce' : ''}`} />
+              <Download className={`w-4 h-4 text-slate-400 group-hover:text-emerald-400 ${isExporting ? 'animate-bounce' : ''}`} />
             </button>
           </div>
         </div>
@@ -482,28 +482,28 @@ export default function App() {
           <button
             type="button"
             onClick={() => setActiveView('settings')}
-            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
               activeView === 'settings'
                 ? 'bg-amber-500 text-slate-950 font-semibold'
-                : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
             }`}
           >
-            <SettingsIcon className="w-4 h-4" />
+            <SettingsIcon className="w-5 h-5" />
             <span>Pengaturan & PIN</span>
           </button>
 
-          <div className="flex items-center justify-between px-3 py-1.5 text-[11px] text-slate-400">
+          <div className="flex items-center justify-between px-3 py-1.5 text-xs text-slate-400">
             <div className="truncate max-w-[130px]">
               <div className="font-semibold text-slate-200 truncate">{settings.ownerName || 'Admin'}</div>
-              <div className="text-[10px] text-slate-500 font-mono">v1.2 Analytics</div>
+              <div className="text-xs text-slate-500 font-mono">v1.2 Analytics</div>
             </div>
             <button
               type="button"
               onClick={handleLock}
-              className="p-1 rounded-md hover:bg-slate-800 text-slate-400 hover:text-amber-400 transition-colors"
+              className="p-1.5 rounded-md hover:bg-slate-800 text-slate-400 hover:text-amber-400 transition-colors"
               title="Kunci Layar"
             >
-              <Lock className="w-3.5 h-3.5" />
+              <Lock className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -629,70 +629,70 @@ export default function App() {
       </div>
 
       {/* Mobile Bottom Navigation Bar */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#0D1322] border-t border-slate-800 shadow-xl px-2 py-1 flex items-center justify-around">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#0D1322] border-t border-slate-800 shadow-xl px-2 py-1.5 flex items-center justify-around">
         <button
           type="button"
           onClick={() => setActiveView('dashboard')}
-          className={`flex flex-col items-center gap-0.5 p-1 rounded-lg text-[10px] font-medium transition-colors ${
+          className={`flex flex-col items-center gap-1 p-1 rounded-lg text-xs font-medium transition-colors ${
             activeView === 'dashboard' ? 'text-amber-400 font-bold' : 'text-slate-400'
           }`}
         >
-          <LayoutDashboard className="w-4 h-4" />
+          <LayoutDashboard className="w-5 h-5" />
           <span>Dashboard</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveView('master')}
-          className={`flex flex-col items-center gap-0.5 p-1 rounded-lg text-[10px] font-medium transition-colors ${
+          className={`flex flex-col items-center gap-1 p-1 rounded-lg text-xs font-medium transition-colors ${
             activeView === 'master' ? 'text-amber-400 font-bold' : 'text-slate-400'
           }`}
         >
-          <Package className="w-4 h-4" />
+          <Package className="w-5 h-5" />
           <span>Produk</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveView('purchases')}
-          className={`flex flex-col items-center gap-0.5 p-1 rounded-lg text-[10px] font-medium transition-colors ${
+          className={`flex flex-col items-center gap-1 p-1 rounded-lg text-xs font-medium transition-colors ${
             activeView === 'purchases' ? 'text-indigo-400 font-bold' : 'text-slate-400'
           }`}
         >
-          <PackagePlus className="w-4 h-4" />
+          <PackagePlus className="w-5 h-5" />
           <span>Beli</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveView('sales')}
-          className={`flex flex-col items-center gap-0.5 p-1 rounded-lg text-[10px] font-medium transition-colors ${
+          className={`flex flex-col items-center gap-1 p-1 rounded-lg text-xs font-medium transition-colors ${
             activeView === 'sales' ? 'text-amber-400 font-bold' : 'text-slate-400'
           }`}
         >
-          <ShoppingBag className="w-4 h-4" />
+          <ShoppingBag className="w-5 h-5" />
           <span>Jual</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveView('stock')}
-          className={`flex flex-col items-center gap-0.5 p-1 rounded-lg text-[10px] font-medium transition-colors ${
+          className={`flex flex-col items-center gap-1 p-1 rounded-lg text-xs font-medium transition-colors ${
             activeView === 'stock' ? 'text-blue-400 font-bold' : 'text-slate-400'
           }`}
         >
-          <Layers className="w-4 h-4" />
+          <Layers className="w-5 h-5" />
           <span>Stok</span>
         </button>
 
         <button
           type="button"
           onClick={() => setMobileMenuOpen(true)}
-          className={`flex flex-col items-center gap-0.5 p-1 rounded-lg text-[10px] font-medium transition-colors ${
+          className={`flex flex-col items-center gap-1 p-1 rounded-lg text-xs font-medium transition-colors ${
             activeView === 'finance' || activeView === 'settings' ? 'text-amber-400 font-bold' : 'text-slate-400'
           }`}
         >
-          <Menu className="w-4 h-4" />
+          <Menu className="w-5 h-5" />
           <span>Lainnya</span>
         </button>
       </nav>
@@ -700,9 +700,9 @@ export default function App() {
       {/* Mobile Drawer for Extra Menus */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4">
-          <div className="bg-[#0D1322] w-full sm:max-w-xs rounded-t-2xl sm:rounded-2xl p-5 shadow-2xl border border-slate-800 animate-in slide-in-from-bottom duration-200">
+          <div className="bg-[#0D1322] w-full sm:max-w-sm rounded-t-2xl sm:rounded-2xl p-5 shadow-2xl border border-slate-800 animate-in slide-in-from-bottom duration-200">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
-              <span className="font-bold text-white text-sm">Navigasi Tambahan</span>
+              <span className="font-bold text-white text-base">Navigasi Tambahan</span>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
@@ -712,18 +712,18 @@ export default function App() {
               </button>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <button
                 type="button"
                 onClick={() => {
                   setActiveView('finance');
                   setMobileMenuOpen(false);
                 }}
-                className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold ${
+                className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold ${
                   activeView === 'finance' ? 'bg-emerald-500 text-slate-950 font-bold' : 'bg-slate-800/60 text-slate-200'
                 }`}
               >
-                <Wallet className="w-4 h-4 text-emerald-400" />
+                <Wallet className="w-5 h-5 text-emerald-400" />
                 <span>Keuangan, Arus Kas & Piutang</span>
               </button>
 
@@ -733,9 +733,9 @@ export default function App() {
                   setMobileMenuOpen(false);
                   handleExportExcel();
                 }}
-                className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-800/60 text-slate-200"
+                className="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold bg-slate-800/60 text-slate-200"
               >
-                <FileSpreadsheet className="w-4 h-4 text-emerald-400" />
+                <FileSpreadsheet className="w-5 h-5 text-emerald-400" />
                 <span>Unduh Laporan Excel (.xlsx)</span>
               </button>
 
@@ -745,11 +745,11 @@ export default function App() {
                   setActiveView('settings');
                   setMobileMenuOpen(false);
                 }}
-                className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold ${
+                className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold ${
                   activeView === 'settings' ? 'bg-amber-500 text-slate-950 font-bold' : 'bg-slate-800/60 text-slate-200'
                 }`}
               >
-                <SettingsIcon className="w-4 h-4 text-slate-300" />
+                <SettingsIcon className="w-5 h-5 text-slate-300" />
                 <span>Pengaturan & Ganti PIN</span>
               </button>
 
@@ -759,9 +759,9 @@ export default function App() {
                   setMobileMenuOpen(false);
                   handleLock();
                 }}
-                className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-rose-950/50 text-rose-300 border border-rose-900/60"
+                className="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold bg-rose-950/50 text-rose-300 border border-rose-900/60"
               >
-                <Lock className="w-4 h-4 text-rose-400" />
+                <Lock className="w-5 h-5 text-rose-400" />
                 <span>Kunci Aplikasi Sekarang</span>
               </button>
             </div>
